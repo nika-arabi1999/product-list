@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import './ProductCard.css';
 
 function ProductCard({ product }: { product: any }) {
