@@ -61,7 +61,8 @@ function App() {
   };
 
   const resetHandler = () => {
-    setFilteredProducts(products);
+     setFilteredProducts(products);
+    setLastFilteredProducts(products);
   };
 
   const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
