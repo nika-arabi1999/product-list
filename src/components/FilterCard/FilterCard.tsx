@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import "./FilterCard.css";
+// import "./FilterCard.css";
 //@ts-ignore
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
@@ -48,19 +48,19 @@ function FilterCard({
   }, [maxPrice]);
 
   return (
-    <div className="filter-card">
-      <div className="search-box">
+    <div className="flex flex-col justify-between border border-solid border-gray-200 rounded-xl px-4 py-5 shadow-sm h-[550px]">
+      <div className="search-box border border-solid px-2 py-3 rounded-xl">
         <input
           type="text"
           placeholder="Search by name..."
-          className="search-input"
+          className="search-input active:outline-none focus:outline-none"
           onChange={searchHandler}
         />
       </div>
-      <div className="filters-box">
+      <div className="filters-box flex flex-col gap-8 *:flex *:flex-col *:gap-3">
         <div className="filter-price">
-          <h4>Select the price range:</h4>
-          <p>price range: {`${price[0]}-${price[1]}`}</p>
+          <h4 className="font-semibold">Select the price range:</h4>
+          <p>price range: {`$${price[0]}-$${price[1]}`}</p>
           <RangeSlider
             min={0}
             max={maxPrice}
@@ -69,12 +69,13 @@ function FilterCard({
           />
         </div>
         <div className="filter-category">
-          <h4>select the category</h4>
+          <h4 className="font-semibold">select the category</h4>
           <select
             name="category"
             id="category"
             onChange={(e) => setCategory(e.target.value)}
             value={category}
+            className="border border-solid p-2 rounded-xl"
           >
             <option value="All">All</option>
             {categories?.map((category) => {
@@ -83,12 +84,13 @@ function FilterCard({
           </select>
         </div>
         <div className="filter-brand">
-          <h4>select the brand</h4>
+          <h4 className="font-semibold">select the brand</h4>
           <select
             name="brand"
             id="brand"
             onChange={(e) => setBrand(e.target.value)}
             value={brand}
+            className="border border-solid p-2 rounded-xl"
           >
             <option value="All">All</option>
             {brands?.map((brand) => {
@@ -97,14 +99,14 @@ function FilterCard({
           </select>
         </div>
       </div>
-      <div className="buttons-box">
+      <div className="flex flex-col gap-3 w-full">
         <button
-          className="btn apply-btn"
+          className="flex items-center justify-center rounded-lg bg-blue-400 px-4 py-2 text-lg font-normal text-gray-50  ring-1 ring-inset ring-blue-700/10"
           onClick={() => filterHandler({ brand, category, price })}
         >
           Apply The Filters
         </button>
-        <button className=" btn reset-btn" onClick={resetFilters}>
+        <button className="flex items-center justify-center rounded-lg bg-gray-200 px-4 py-2 text-lg font-normal text-gray-950 ring-1 ring-inset ring-blue-700/10" onClick={resetFilters}>
           Reset Filters
         </button>
       </div>

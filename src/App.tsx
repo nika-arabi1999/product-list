@@ -79,7 +79,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="flex p-10 gap-8">
       <FilterCard
         brands={brands}
         categories={categories}
